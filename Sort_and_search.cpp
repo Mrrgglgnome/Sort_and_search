@@ -1,20 +1,38 @@
-﻿// Sort_and_search.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
+﻿
 #include <iostream>
+#include <vector>
+
+using namespace std;
+
+vector<char> choice(vector<char> unsorted) {
+    int last_index = unsorted.size() - 1;
+    while (last_index != 0) {
+        char max = CHAR_MIN;
+        int index_max = 0;
+        for (int i = 0; i <= last_index; i++) {
+            if (max < unsorted[i]) {
+                max = unsorted[i];
+                index_max = i;
+            }
+        }
+        unsorted[index_max] = unsorted[last_index];
+        unsorted[last_index--] = max;
+    }
+    return unsorted;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    vector<char> input;
+    for (int i = 0; i < 5; i++) {
+        char in;
+        cin >> in;
+        input.push_back(in);
+    }
+
+    vector<char> sorted = choice(input);
+
+    for (int i = 0; i < 5; i++) {
+        cout << sorted[i] << " ";
+    }
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
