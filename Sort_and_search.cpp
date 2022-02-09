@@ -4,7 +4,7 @@
 
 using namespace std;
 
-vector<char> choice(vector<char> unsorted) {
+vector<char> selection(vector<char> unsorted) {
     int last_index = unsorted.size() - 1;
     while (last_index != 0) {
         char max = CHAR_MIN;
@@ -30,7 +30,7 @@ int main()
         input.push_back(in);
     }
 
-    vector<char> sorted = choice(input);
+    vector<char> sorted = selection(input);
 
     for (int i = 0; i < 5; i++) {
         cout << sorted[i] << " ";
