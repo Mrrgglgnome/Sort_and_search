@@ -37,18 +37,38 @@ vector<char> quick_sort(vector<char> unsorted) {
     }
 }
 
+int binary_search(vector<char> vector, char find) {
+    int half = vector.size() / 2;
+    int index = half;
+    while (vector[index] != find && half != 0) {
+        if (vector[index] > find)
+            index -= half;
+        else
+            index += half;
+    }
+        half /= 2;
+    if (half == 0) {
+        cout << "element not found";
+        return NAN;
+    }
+    else {
+        cout << "element at index: " << index;
+        return index;
+    }
+}
+
 int main()
 {
     vector<char> input;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
         char in;
         cin >> in;
         input.push_back(in);
     }
 
-    vector<char> sorted = quick_sort(input);
-
+    binary_search(input, '0');
+    /*
     for (int i = 0; i < 5; i++) {
         cout << sorted[i] << " ";
-    }
+    }*/
 }
