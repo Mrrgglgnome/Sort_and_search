@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 using namespace std;
 
@@ -48,11 +49,11 @@ int binary_search(vector<char> vector, char find) {
     }
         half /= 2;
     if (half == 0) {
-        cout << "element not found";
+        cout << "Element not found!";
         return NAN;
     }
     else {
-        cout << "element at index: " << index;
+        cout << "Element at index: " << index;
         return index;
     }
 }
@@ -60,15 +61,21 @@ int binary_search(vector<char> vector, char find) {
 int main()
 {
     vector<char> input;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         char in;
         cin >> in;
         input.push_back(in);
     }
 
-    binary_search(input, '0');
-    /*
+    sort(input.begin(), input.end());
+    if (binary_search(input.begin(), input.end(), '2'))
+        cout << "Element found!" << endl;
+    else
+        cout << "Element not found!" << endl;
+    
+    cout << "Sorted: ";
+
     for (int i = 0; i < 5; i++) {
-        cout << sorted[i] << " ";
-    }*/
+        cout << input[i] << " ";
+    }
 }
